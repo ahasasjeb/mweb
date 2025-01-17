@@ -14,17 +14,20 @@ export default defineNuxtConfig({
         ? ['naive-ui', 'vueuc', '@css-render/vue3-ssr', '@juggle/resize-observer']
         : ['@juggle/resize-observer']
   },
-  ssr: true,
+  ssr: false, // 改为客户端渲染
   experimental: {
     payloadExtraction: false
   },
   nitro: {
     prerender: {
       crawlLinks: false,
-      routes: ['/']
+      routes: [],
+      ignore: ['/**']
     }
   },
   app: {
+    baseURL: '/',
+    buildAssetsDir: '/_nuxt/',
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
@@ -32,6 +35,9 @@ export default defineNuxtConfig({
         lang: 'zh-CN'
       }
     }
+  },
+  routeRules: {
+    '/**': { ssr: false }
   },
   vite: {
     plugins: [
