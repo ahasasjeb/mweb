@@ -15,6 +15,14 @@ export default defineNuxtConfig({
         : ['@juggle/resize-observer']
   },
   ssr: true,
+  experimental: {
+    payloadExtraction: false
+  },
+  nitro: {
+    prerender: {
+      crawlLinks: true
+    }
+  },
   app: {
     head: {
       charset: 'utf-8',

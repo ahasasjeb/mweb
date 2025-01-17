@@ -114,8 +114,10 @@ const servers: ServerOption[] = [
 const selectedServer = ref<string>(servers[0].address)
 
 const copyServerAddress = () => {
-  navigator.clipboard.writeText(selectedServer.value)
-  message.success('服务器地址已复制到剪贴板')
+  if (process.client) {
+    navigator.clipboard.writeText(selectedServer.value)
+    message.success('服务器地址已复制到剪贴板')
+  }
 }
 
 const getCurrentServerName = () => {
