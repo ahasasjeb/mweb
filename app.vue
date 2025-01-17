@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Analytics } from '@vercel/analytics/nuxt'
 const router = useRouter()
 const menuOptions = [
   {
@@ -23,6 +24,7 @@ const menuOptions = [
             <div class="logo">明像素</div>
             <n-menu mode="horizontal" :options="menuOptions" />
           </div>
+          <Analytics />
         </n-layout-header>
         <n-layout-content class="transparent-content">
           <NuxtPage />
