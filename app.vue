@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Analytics } from '@vercel/analytics/nuxt'
+import { SpeedInsights } from "@vercel/speed-insights/nuxt"
 const router = useRouter()
 const menuOptions = [
   {
@@ -25,6 +26,7 @@ const menuOptions = [
             <n-menu mode="horizontal" :options="menuOptions" />
           </div>
           <Analytics />
+          <SpeedInsights/>
         </n-layout-header>
         <n-layout-content class="transparent-content">
           <NuxtPage />
