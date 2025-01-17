@@ -1,15 +1,14 @@
 <script setup lang="ts">
-
 const menuOptions = [
   {
     label: '首页',
     key: 'home',
-    onClick: () => navigateTo('/')
+    onClick: () => process.client && navigateTo('/')
   },
   {
     label: '关于',
     key: 'about',
-    onClick: () => navigateTo('/about')
+    onClick: () => process.client && navigateTo('/about')
   }
 ]
 </script>
