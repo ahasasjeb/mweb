@@ -13,6 +13,7 @@ const serverStatus = ref({
 })
 
 const fetchServerStatus = async () => {
+  if (!process.client) return
   serverStatus.value.loading = true
   try {
     const response = await axios.get('https://ping.lvjia.cc/mcapi.php?host=mc2.lvjia.cc')
@@ -54,6 +55,7 @@ const skylandStatus = ref({
 })
 
 const fetchSkylandStatus = async () => {
+  if (!process.client) return
   skylandStatus.value.loading = true
   try {
     const response = await axios.get('https://ping.lvjia.cc/mcapi.php?host=f.rainplay.cn&port=34374')
@@ -86,9 +88,12 @@ const fetchSkylandStatus = async () => {
   }
 }
 
+// 在客户端初始化时获取状态
 onMounted(() => {
-  fetchServerStatus()
-  fetchSkylandStatus() // 添加空岛服务器状态获取
+  if (process.client) {
+    fetchServerStatus()
+    fetchSkylandStatus()
+  }
 })
 
 const message = useMessage()

@@ -14,14 +14,14 @@ export default defineNuxtConfig({
         ? ['naive-ui', 'vueuc', '@css-render/vue3-ssr', '@juggle/resize-observer']
         : ['@juggle/resize-observer']
   },
-  ssr: false, // 改为客户端渲染
+  ssr: true,
   experimental: {
-    payloadExtraction: false
+    payloadExtraction: true
   },
   nitro: {
     prerender: {
-      crawlLinks: false,
-      routes: [],
+      crawlLinks: true,
+      routes: ['/'],
       ignore: ['/**']
     }
   },
@@ -37,6 +37,7 @@ export default defineNuxtConfig({
     }
   },
   routeRules: {
+    '/': { prerender: true },
     '/**': { ssr: false }
   },
   vite: {

@@ -1,14 +1,15 @@
 <script setup lang="ts">
+const router = useRouter()
 const menuOptions = [
   {
     label: '首页',
     key: 'home',
-    onClick: () => process.client && navigateTo('/')
+    onClick: () => router.push('/')
   },
   {
     label: '关于',
     key: 'about',
-    onClick: () => process.client && navigateTo('/about')
+    onClick: () => router.push('/about')
   }
 ]
 </script>

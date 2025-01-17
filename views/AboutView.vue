@@ -5,7 +5,10 @@ import axios from 'axios'
 const serverDescription = ref('')
 
 const fetchServerDescription = async () => {
-  if (!process.client) return
+  if (!process.client) {
+    serverDescription.value = '加载中...'
+    return
+  }
   try {
     const response = await axios.get('https://ping.lvjia.cc/mcapi.php?host=mc2.lvjia.cc')
     if (response.data.status === 'success') {
